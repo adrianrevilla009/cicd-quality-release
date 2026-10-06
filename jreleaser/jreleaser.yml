@@ -1,0 +1,28 @@
+project:
+  name: orders-service
+  version: 1.0.0
+  description: Orders service (lab)
+  license: MIT
+  authors: [Lab Author]
+  java:
+    groupId: com.example.orders
+    version: "21"
+release:
+  github:
+    owner: adrianrevilla009
+    name: orders-service
+    token: "{{ env.JRELEASER_GITHUB_TOKEN }}"
+    changelog:
+      formatted: ALWAYS
+      preset: conventional-commits
+signing:
+  active: ALWAYS
+  armored: true
+deploy:
+  maven:
+    mavenCentral:
+      sonatype:
+        active: RELEASE
+        url: https://central.sonatype.com/api/v1/publisher
+        stagingRepositories:
+          - target/staging-deploy

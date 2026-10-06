@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", ":semanticCommits"],
+  "timezone": "UTC",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "packageRules": [
+    {"matchUpdateTypes": ["minor", "patch"], "matchCurrentVersion": "!/^0/", "automerge": true, "groupName": "non-major"},
+    {"matchManagers": ["maven"], "matchPackageNames": ["org.springframework.boot:*"], "groupName": "spring-boot"},
+    {"matchUpdateTypes": ["major"], "dependencyDashboardApproval": true}
+  ],
+  "vulnerabilityAlerts": {"labels": ["security"], "schedule": ["at any time"]}
+}

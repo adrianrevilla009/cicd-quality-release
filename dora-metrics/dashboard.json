@@ -1,0 +1,9 @@
+{
+  "title": "DORA",
+  "panels": [
+    {"type": "stat", "title": "Deploys / week", "targets": [{"expr": "sum(increase(deployments_total[7d]))"}]},
+    {"type": "stat", "title": "Lead time (h, p50)", "targets": [{"expr": "histogram_quantile(0.5, sum(rate(lead_time_hours_bucket[30d])) by (le))"}]},
+    {"type": "stat", "title": "Change failure rate", "targets": [{"expr": "sum(increase(deployments_failed_total[30d])) / sum(increase(deployments_total[30d]))"}]},
+    {"type": "stat", "title": "MTTR (h)", "targets": [{"expr": "avg(restore_time_hours)"}]}
+  ]
+}

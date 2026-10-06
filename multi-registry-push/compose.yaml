@@ -1,0 +1,7 @@
+services:
+  registry-a:
+    image: registry:2.8.3
+    ports: ["5000:5000"]
+  registry-b:
+    image: registry:2.8.3
+    ports: ["5001:5000"]

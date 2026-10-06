@@ -1,0 +1,13 @@
+name: quality-gate
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  sonar:
+    uses: adrianrevilla009/lab-workflows/.github/workflows/maven-sonar.yml@main
+    with:
+      java-version: "21"
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}

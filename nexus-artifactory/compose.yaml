@@ -1,0 +1,11 @@
+services:
+  nexus:
+    image: sonatype/nexus3:3.70.1
+    ports: ["8081:8081"]
+    volumes: [nexus-data:/nexus-data]
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8081/service/rest/v1/status || exit 1"]
+      interval: 15s
+      retries: 20
+volumes:
+  nexus-data: {}
